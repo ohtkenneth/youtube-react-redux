@@ -1,10 +1,11 @@
+import React from 'react';
 var Search = ({videoSearched}) => {
   let keyStrokeCounter = 0;
   let debounceTimeout = null;
 
   const onButtonClick = function() {
-    const searchTerm = $('.form-control').val();
-    searchTerm.length > 0 ? videoSearched($('.form-control').val()) : void 0;
+    // const searchTerm = $('.form-control').val();
+    // searchTerm.length > 0 ? videoSearched($('.form-control').val()) : void 0;
   };
 
   const onKeyStroke = function(event) {

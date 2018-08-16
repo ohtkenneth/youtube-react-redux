@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import Search from './Search';
 import VideoPlayer from './VideoPlayer';
 import VideoList from './VideoList';
@@ -12,7 +13,7 @@ class App extends React.Component {
       videoList: []
     };
 
-    this.searchVideos();
+    // this.searchVideos();
   }
   // method to pass down to videoListEntry to call when a click occures to set state with clicked video
   onVideoClicked(data) {
@@ -25,30 +26,30 @@ class App extends React.Component {
   searchVideos(searchTerm) {
     const _this = this;
 
-    $.ajax({
-      url: 'https://www.googleapis.com/youtube/v3/search?',
-      data: {
-        q: searchTerm || 'dogs',
-        maxResults: 5,
-        part: 'snippet',
-        key: window.YOUTUBE_API_KEY
-      },
-      videoEmbeddable: true,
-      type: 'GET',
-      success: function(data) {
-        const firstVideo = data.items[0];
-
-        _this.setState({
-          currentVideoId: searchTerm ? _this.state.currentVideoId : firstVideo.id.videoId,
-          currentTitle: searchTerm ? _this.state.currentTitle : firstVideo.snippet.title,
-          currentDescription: searchTerm ? _this.state.currentDescription : firstVideo.snippet.description,
-          videoList: data.items
-        });
-      },
-      error: function(data) {
-        console.log(data);
-      }
-    });
+    // $.ajax({
+    //   url: 'https://www.googleapis.com/youtube/v3/search?',
+    //   data: {
+    //     q: searchTerm || 'dogs',
+    //     maxResults: 5,
+    //     part: 'snippet',
+    //     key: window.YOUTUBE_API_KEY
+    //   },
+    //   videoEmbeddable: true,
+    //   type: 'GET',
+    //   success: function(data) {
+    //     const firstVideo = data.items[0];
+    //
+    //     _this.setState({
+    //       currentVideoId: searchTerm ? _this.state.currentVideoId : firstVideo.id.videoId,
+    //       currentTitle: searchTerm ? _this.state.currentTitle : firstVideo.snippet.title,
+    //       currentDescription: searchTerm ? _this.state.currentDescription : firstVideo.snippet.description,
+    //       videoList: data.items
+    //     });
+    //   },
+    //   error: function(data) {
+    //     console.log(data);
+    //   }
+    // });
   };
   render() {
     return (
