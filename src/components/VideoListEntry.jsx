@@ -1,22 +1,21 @@
 import React from 'react';
-var VideoListEntry = ({video, videoClicked}) => {
-  var onClickHandler = (event) => {
-    const data = event.target.dataset;
+import { selectVideoFromList } from '../actions';
 
-    videoClicked({
-      videoid: data.videoid,
-      title: data.title,
-      description: data.description
-    });
+var VideoListEntry = ({video, dispatch}) => {
+  //console.log(video);
+
+  var onClickHandler = (event) => {
+    dispatch(selectVideoFromList(event.target.dataset.videoid))
   };
+
   return (
-    <div className="video-list-entry media" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description} onClick={onClickHandler}>
-      <div className="media-left media-middle">
-        <img className="media-object" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description} src={video.snippet.thumbnails.default.url} alt="" />
+    <div id="videoData" className="video-list-entry media" data-videoid={video.id.videoId} onClick={onClickHandler}>
+      <div className="media-left media-middle" data-videoid={video.id.videoId} onClick={onClickHandler}>
+        <img className="media-object" data-videoid={video.id.videoId} src={video.snippet.thumbnails.default.url} alt="" onClick={onClickHandler}/>
       </div>
-      <div className="media-body">
-        <div className="video-list-entry-title" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description}>{video.snippet.title}</div>
-        <div className="video-list-entry-detail" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description}>{video.snippet.description}</div>
+      <div className="media-body" data-videoid={video.id.videoId} onClick={onClickHandler}>
+        <div className="video-list-entry-title" data-videoid={video.id.videoId} onClick={onClickHandler}>{video.snippet.title}</div>
+        <div className="video-list-entry-detail" data-videoid={video.id.videoId} onClick={onClickHandler}>{video.snippet.description}</div>
       </div>
     </div>
   )

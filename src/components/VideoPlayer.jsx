@@ -1,19 +1,19 @@
 import React from 'react';
-var VideoPlayer = ({video}) => {
-  // console.log(videoId);
-  const videoUrl = `https://www.youtube.com/embed/${video.currentVideoId}?autoplay=1`
-  console.log(videoUrl);
+var VideoPlayer = ({video, currentVideo}) => {
+  // console.log(currentVideo);
+  const videoUrl = `https://www.youtube.com/embed/${currentVideo}?autoplay=1`;
+
   return (
     <div className="video-player">
       <div className="embed-responsive embed-responsive-16by9">
         <iframe className="embed-responsive-item" src={videoUrl} allowFullScreen></iframe>
       </div>
       <div className="video-player-details">
-        <h3>{video.currentTitle}</h3>
-        <div>{video.currentDescription}</div>
+        {/* <h3>{video.currentTitle}</h3>
+        <div>{video.currentDescription}</div> */}
       </div>
     </div>
-  )
+  );
 };
 
 // PropTypes tell other developers what `props` a component expects
