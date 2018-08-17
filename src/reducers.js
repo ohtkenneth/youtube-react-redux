@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 import { selectVideoFromList } from './actions';
 import exampleVideoData from './data/exampleData.js';
-// reducer to consume actions regarding the video player
-const initialState = {
-  currentVideo: '4ZAEBxGipoA',
-  videos: exampleVideoData,
-};
 
-export function selectVideo(state = initialState, action) {
+// reducer to consume actions regarding the video player
+const selectVideoInitialState = {
+  currentVideo: '4ZAEBxGipoA',
+};
+export function selectVideo(state = selectVideoInitialState, action) {
   if (action.type === 'SELECT_VIDEO') {
     // find the selected video using action.videoId
     const newState = Object.assign({}, state, {
+      // set current video
       currentVideo: state.videos.find((video) => video.id.videoId = action.videoId).id.videoId
     });
     return newState;
@@ -18,18 +18,21 @@ export function selectVideo(state = initialState, action) {
   return state;
 }
 
+// function to handle async actions
 function videos(
   state = {
-    isFetching: false,
     items: [],
+    isFetching: false,
   },
   action,
 ) {
+  // fetchVideos aync action gets videos and sets isFetching to true
   if (action.type === 'REQUEST_VIDEOS') {
     return Object.assign({}, state, {
       isFetching: true,
     });
   }
+  // fetchVideos upon resolving returns payload with items
   if (action.type === 'RECEIVE_VIDEOS') {
     return Object.assign({}, state, {
       isFetching: false,
@@ -38,14 +41,17 @@ function videos(
   }
 }
 
-function videosBySearch(state = {}, action) {
+const videosBySearchInitialState = {
+  items: [],
+  isFetching: false,
+};
+// actual reducer
+function videosBySearch(state = videosBySearchInitialState, action) {
   switch (action.type) {
     case 'REQUEST_VIDEOS':
     case 'RECEIVE_VIDEOS':
-      return Object.assign({}, state, {
-        // videos
-        videos: videos(state, action)
-      });
+      // on receive videos, updates state with results
+      return Object.assign({}, state, videos(state, action));
     default:
       return state;
   }

@@ -24,7 +24,7 @@ const store = createStore(
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware, // neat middleware that logs actions
-  )
+  ),
 );
 
 // store.dispatch(selectVideoFromList('o5E894TmHJg'));

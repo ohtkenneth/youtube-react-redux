@@ -10,7 +10,7 @@ function App(props) {
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <Search />
+          <Search dispatch={props.dispatch}/>
         </div>
       </nav>
       <div className="row">
