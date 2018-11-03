@@ -27,7 +27,6 @@ const store = createStore(
   ),
 );
 
-// store.dispatch(selectVideoFromList('o5E894TmHJg'));
 store
   .dispatch(fetchVideos('reactjs'))
   .then(() => console.log(store.getState()));

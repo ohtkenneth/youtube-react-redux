@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Search from './Search';
-// import VideoPlayer from './VideoPlayer';
-// import VideoList from './VideoList';
 import VisibleVideoPlayer from '../containers/VisibleVideoPlayer';
 import VisibleVideoList from '../containers/VisibleVideoList';
 
-function App(props) {
+const App = (props) => {
   return (
     <div>
       <nav className="navbar">
@@ -22,9 +20,7 @@ function App(props) {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
 export default App;

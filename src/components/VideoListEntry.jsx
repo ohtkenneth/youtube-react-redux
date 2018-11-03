@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { selectVideoFromList } from '../actions';
 
 var VideoListEntry = ({video, dispatch}) => {
-  //console.log(video);
 
   var onClickHandler = (event) => {
     dispatch(selectVideoFromList(event.target.dataset.videoid))
@@ -21,13 +21,8 @@ var VideoListEntry = ({video, dispatch}) => {
   )
 };
 
-// PropTypes tell other developers what `props` a component expects
-// Warnings will be shown in the console when the defined rules are violated
-// VideoListEntry.propTypes = {
-//   video: React.PropTypes.object.isRequired
-// };
-
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
+VideoListEntry.propTypes = {
+  video: PropTypes.object.isRequired
+};
 
 export default VideoListEntry;
