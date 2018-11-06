@@ -1,6 +1,9 @@
 # Youtube-react-redux
 Front end implementation of youtube client
 
+## Requirements
+Youtube api key
+
 ## Installation
 ```
 npm install
